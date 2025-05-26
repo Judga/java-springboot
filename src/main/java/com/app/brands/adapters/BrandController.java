@@ -9,7 +9,7 @@ import com.app.brands.domain.IBrandService;
 import com.app.brands.domain.Brand;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/brands")
 public class BrandController {
 
     private final IBrandService brandService;
@@ -18,35 +18,35 @@ public class BrandController {
         this.brandService = brandService;
     }
 
-    // all users
+    // Get all brands
     @GetMapping
     public ResponseEntity<List<Brand>> getAllBrands() {
         List<Brand> brands = brandService.findAll();
         return ResponseEntity.ok(brands);
     }
 
-    // user by id
+    // Get brand by id
     @GetMapping("/{id}")
     public ResponseEntity<Brand> getBrandrById(@PathVariable Long id) {
         Brand brand =brandService.findById(id);
         return ResponseEntity.ok(brand);
     }
 
-    // create user
+    // Create new brand
     @PostMapping
     public ResponseEntity<Brand> createBrand(@RequestBody Brand brand) {
         Brand newBrand = brandService.save(brand);
         return ResponseEntity.ok(newBrand);
     }
 
-    // update user
+    // Update existing brand
     @PutMapping("/{id}")
     public ResponseEntity<Brand> updateBrand(@PathVariable Long id, @RequestBody Brand brand) {
         Brand updatedBrand = brandService.update(brand, id);
         return ResponseEntity.ok(updatedBrand);
     }
 
-    // delete user
+    // Delete brand
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBrand(@PathVariable Long id) {
         brandService.deleteById(id);

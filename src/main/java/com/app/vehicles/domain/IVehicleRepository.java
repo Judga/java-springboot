@@ -3,6 +3,8 @@ package com.app.vehicles.domain;
 import java.util.List;
 import java.util.Optional;
 
+import com.app.brands.domain.Brand;
+import com.app.typevehicles.domain.TypeVehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
@@ -37,23 +39,25 @@ public interface IVehicleRepository extends JpaRepository<Vehicle, Long> {
 
     Optional<Vehicle> findByPlate(String plate);
 
-    // Check if an email is already registered
+    // Check if a plate is already registered
     boolean existsByPlate(String plate);
 
-    // Search for a user by their email
-    Optional<Vehicle> findByTypevehiculo(int typeVehicleId);
+    // Search for a vehicle by its type
+    Optional<Vehicle> findByTypeVehicle(TypeVehicle typeVehicle);
 
-    // Check if an email is already registered
-    boolean existsByTypevehiculo(String typeVehicleId);
+    // Check if a vehicle with the given type exists
+    boolean existsByTypeVehicle(TypeVehicle typeVehicle);
 
-    Optional<Vehicle> findByBrandid(String brandId);
+    // Search for a vehicle by its brand
+    Optional<Vehicle> findByBrand(Brand brand);
 
-    // Check if an email is already registered
-    boolean existsByBrandid(String brandId);
+    // Check if a vehicle with the given brand exists
+    boolean existsByBrand(Brand brand);
 
+    // Search for a vehicle by its color
     Optional<Vehicle> findByColor(String color);
 
-    // Check if an email is already registered
+    // Check if a color is already registered
     boolean existsByColor(String color);
 
 }

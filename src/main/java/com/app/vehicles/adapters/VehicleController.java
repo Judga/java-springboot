@@ -9,7 +9,7 @@ import com.app.vehicles.domain.IVehicleService;
 import com.app.vehicles.domain.Vehicle;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/vehicles")
 public class VehicleController {
 
     private final IVehicleService vehicleService;
@@ -18,35 +18,35 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
-    // all users
+    // Get all vehicles
     @GetMapping
     public ResponseEntity<List<Vehicle>> getAllVehicles() {
         List<Vehicle> vehicles = vehicleService.findAll();
         return ResponseEntity.ok(vehicles);
     }
 
-    // user by id
+    // Get vehicle by id
     @GetMapping("/{id}")
     public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id) {
         Vehicle vehicle = vehicleService.findById(id);
         return ResponseEntity.ok(vehicle);
     }
 
-    // create user
+    // Create new vehicle
     @PostMapping
-    public ResponseEntity<Vehicle> createvehicle(@RequestBody Vehicle vehicle) {
+    public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle) {
         Vehicle newVehicle = vehicleService.save(vehicle);
         return ResponseEntity.ok(newVehicle);
     }
 
-    // update user
+    // Update existing vehicle
     @PutMapping("/{id}")
     public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
         Vehicle updatedVehicle = vehicleService.update(vehicle, id);
         return ResponseEntity.ok(updatedVehicle);
     }
 
-    // delete user
+    // Delete vehicle
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
         vehicleService.deleteById(id);

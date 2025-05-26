@@ -37,12 +37,6 @@ public class VehicleService implements IVehicleService {
         if (vehicleRepository.existsByPlate(vehicle.getPlate())) {
             throw new IllegalArgumentException("Plate registred: " + vehicle.getPlate());
         }
-        if (vehicleRepository.existsByTypevehiculo(vehicle.getTypeVehicleId())) {
-            throw new IllegalArgumentException("Type registred: " + vehicle.getTypeVehicleId());
-        }
-        if (vehicleRepository.existsByBrandid(vehicle.getBrandId())) {
-            throw new IllegalArgumentException("Brand id registred: " + vehicle.getBrandId());
-        }
         if (vehicleRepository.existsByColor(vehicle.getColor())) {
             throw new IllegalArgumentException("Color registred: " + vehicle.getColor());
         }
@@ -55,8 +49,8 @@ public class VehicleService implements IVehicleService {
     public Vehicle update(Vehicle vehicle, Long id) {
         Vehicle existingVehicle = findById(id);
         existingVehicle.setPlate(vehicle.getPlate());
-        existingVehicle.setTypeVehicleId(vehicle.getTypeVehicleId());
-        existingVehicle.setBrandId(vehicle.getBrandId());
+        existingVehicle.setTypeVehicle(vehicle.getTypeVehicle());
+        existingVehicle.setBrand(vehicle.getBrand());
         existingVehicle.setColor(vehicle.getColor());
         return vehicleRepository.save(existingVehicle);
     }

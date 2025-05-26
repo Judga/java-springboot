@@ -1,5 +1,7 @@
 package com.app.vehicles.domain;
 
+import com.app.brands.domain.Brand;
+import com.app.typevehicles.domain.TypeVehicle;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,11 +16,13 @@ public class Vehicle {
     @Column(nullable = false)
     private String plate;
 
-    @Column(nullable = false)
-    private String typeVehicleId;
+    @ManyToOne
+    @JoinColumn(name = "type_vehicle_id", nullable = false)
+    private TypeVehicle typeVehicle;
 
-    @Column(nullable = false)
-    private String brandId;
+    @ManyToOne
+    @JoinColumn(name = "brand_id", nullable = false)
+    private Brand brand;
 
     @Column(nullable = false, unique = true)
     private String color;
@@ -27,11 +31,11 @@ public class Vehicle {
     public Vehicle() {}
 
     // Constructor with parameters
-    public Vehicle(Long id, String plate,String typeVehicleId, String brandId, String color) {
+    public Vehicle(Long id, String plate, TypeVehicle typeVehicle, Brand brand, String color) {
         this.id = id;
         this.plate = plate;
-        this.typeVehicleId = typeVehicleId; 
-        this.brandId = brandId;
+        this.typeVehicle = typeVehicle; 
+        this.brand = brand;
         this.color = color;
     }
 
@@ -44,12 +48,12 @@ public class Vehicle {
         return plate;
     }
 
-    public String getTypeVehicleId() {
-        return typeVehicleId;
+    public TypeVehicle getTypeVehicle() {
+        return typeVehicle;
     }
 
-    public String getBrandId() {
-        return brandId;
+    public Brand getBrand() {
+        return brand;
     }
 
     public String getColor() {
@@ -65,12 +69,12 @@ public class Vehicle {
         this.plate = plate;
     }
 
-    public void setTypeVehicleId(String typeVehicleId) {
-        this.typeVehicleId = typeVehicleId;
+    public void setTypeVehicle(TypeVehicle typeVehicle) {
+        this.typeVehicle = typeVehicle;
     }
 
-    public void setBrandId(String brandId) {
-        this.brandId = brandId;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public void setColor(String color) {

@@ -39,6 +39,10 @@ public class Register {
     @NotNull(message = "Operator cannot be null")
     private int operatorId; 
 
+    @Column(name = "email", nullable = false, unique = true)
+    @NotNull(message = "Email cannot be null")
+    private String email;
+
     @Column(name = "register_date", nullable = false)
     @NotNull(message = "Date cannot be null")
     @Temporal(TemporalType.TIMESTAMP) 

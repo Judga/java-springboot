@@ -31,8 +31,8 @@ public class VehicleDatasource {
     public Optional<Vehicle> update(Vehicle vehicle, Long id) {
         return vehicleRepository.findById(id).map(existingVehicle -> {
             existingVehicle.setPlate(vehicle.getPlate());
-            existingVehicle.setTypeVehicleId(vehicle.getTypeVehicleId());
-            existingVehicle.setBrandId(vehicle.getBrandId());
+            existingVehicle.setTypeVehicle(vehicle.getTypeVehicle());
+            existingVehicle.setBrand(vehicle.getBrand());
             existingVehicle.setColor(vehicle.getColor());
             return vehicleRepository.save(existingVehicle);
         });

@@ -9,7 +9,7 @@ import com.app.roles.domain.IRolService;
 import com.app.roles.domain.Rol;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/roles")
 public class RolController {
 
     private final IRolService rolService;
@@ -18,37 +18,37 @@ public class RolController {
         this.rolService = rolService;
     }
 
-    // all users
+    // Get all roles
     @GetMapping
     public ResponseEntity<List<Rol>> getAllRoles() {
         List<Rol> roles = rolService.findAll();
         return ResponseEntity.ok(roles);
     }
 
-    // user by id
+    // Get role by id
     @GetMapping("/{id}")
     public ResponseEntity<Rol> getRolById(@PathVariable Long id) {
         Rol rol = rolService.findById(id);
         return ResponseEntity.ok(rol);
     }
 
-    // create user
+    // Create new role
     @PostMapping
     public ResponseEntity<Rol> createRol(@RequestBody Rol rol) {
         Rol newRol = rolService.save(rol);
         return ResponseEntity.ok(newRol);
     }
 
-    // update user
+    // Update existing role
     @PutMapping("/{id}")
     public ResponseEntity<Rol> updateRol(@PathVariable Long id, @RequestBody Rol rol) {
         Rol updatedRol = rolService.update(rol, id);
         return ResponseEntity.ok(updatedRol);
     }
 
-    // delete user
+    // Delete role
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRol(@PathVariable Long id) {
         rolService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
