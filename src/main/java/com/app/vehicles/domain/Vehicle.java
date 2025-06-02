@@ -24,7 +24,7 @@ public class Vehicle {
     @JoinColumn(name = "brand_id", nullable = false)
     private Brand brand;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String color;
 
     // Empty constructor (required for JPA)

@@ -14,7 +14,7 @@ public class CarService {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Double price;
 
     @Column(nullable = false)

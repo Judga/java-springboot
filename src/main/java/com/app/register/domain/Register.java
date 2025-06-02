@@ -36,7 +36,7 @@ public class Register {
     @NotNull(message = "Services cannot be null")
     private List<CarService> services;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false)
     @NotNull(message = "Email cannot be null")
     private String email;
 
