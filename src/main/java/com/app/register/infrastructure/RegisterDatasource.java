@@ -35,11 +35,9 @@ public class RegisterDatasource {
 
    public Optional<Register> update(Register register, Long id) {
     return registerRepository.findById(id).map(existingRegister -> {
-        existingRegister.setVehicleId(register.getVehicleId());
-        existingRegister.setServiceId(register.getServiceId());
-        existingRegister.setServiceStateId(register.getServiceStateId());
-        existingRegister.setOperatorId(register.getOperatorId());
-        existingRegister.setUserId(register.getUserId());
+        existingRegister.setVehicle(register.getVehicle());
+        existingRegister.setServices(register.getServices());
+        existingRegister.setUser(register.getUser());
         existingRegister.setRegisterDate(register.getRegisterDate());
         return registerRepository.save(existingRegister);
     });

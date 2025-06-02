@@ -19,6 +19,7 @@ import com.app.auth.infrastructure.dto.ProfileResponse;
 import com.app.auth.infrastructure.dto.RegisterRequest;
 import com.app.users.domain.IUserRepository;
 import com.app.users.domain.User;
+import com.app.roles.domain.Rol;
 
 import lombok.RequiredArgsConstructor;
 
@@ -55,6 +56,9 @@ public class AuthService {
         user.setEmail(request.getEmail());
         user.setName(request.getName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        Rol rol = new Rol();
+        rol.setId(1L);
+        user.setRol(rol);
         userRepository.save(user);
 
         // Authenticate the user and generate tokens

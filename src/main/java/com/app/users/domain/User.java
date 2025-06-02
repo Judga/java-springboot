@@ -1,5 +1,7 @@
 package com.app.users.domain;
 
+import com.app.roles.domain.Rol;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,16 +21,22 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+    
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Rol rol;
 
     // Empty constructor (required for JPA)
-    public User() {}
+    public User() {
+    }
 
     // Constructor with parameters
-    public User(Long id, String name, String email, String password) {
+    public User(Long id, String name, String email, String password, Rol rol) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.rol = rol;
     }
 
     // Getters y Setters
@@ -62,5 +70,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Rol getRol() {
+        return this.rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }
